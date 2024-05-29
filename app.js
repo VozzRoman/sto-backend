@@ -3,6 +3,8 @@ import morgan from "morgan";
 import dotenv from 'dotenv';
 import cors from 'cors';
 import clientsRoute from './routes/clientsRoute.js';
+import tireStore from './routes/tireStoreRoute.js';
+import soldTires from './routes/soldTireRoute.js';
 import connection from "./database.js";
 
 
@@ -21,8 +23,8 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/api/clients", clientsRoute);
-// app.use("/api/tireStore", tireStore);
-// app.use("/api/clients", soldTire);
+app.use("/api/tiresStore", tireStore);
+app.use("/api/soldTires", soldTires);
 
 
 
@@ -31,6 +33,10 @@ app.use((req, res) => {
 	res.status(404).json({message: "не вірний маршрут"});
 })
 
+app.use((err, req, res, next) => {
+	console.error(err); // Выводите ошибку в консоль для дополнительной диагностики
+	res.status(err.status || 500).json({ error: err.message });
+ });
 
 connection();
 
