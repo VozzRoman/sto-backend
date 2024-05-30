@@ -13,5 +13,6 @@ router.post('/', createTire);
 router.get('/:id', findByTire);
 router.put('/:id', updateTire);
 router.delete('/:id', removeTires);
+// router.delete('/:id', removeTires);
 
 export default router;
