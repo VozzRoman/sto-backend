@@ -14,7 +14,7 @@ const app = express();
 
 const logger = process.env === "development" ? "dev" : "short";
 
-const allowedOrigins = ['https://wheels-car-service.netlify.app'];
+const allowedOrigins = ['https://wheels-car-service.netlify.app,  http://localhost:5174'];
 
 const corsOptions = {
   origin: function (origin, callback) {
