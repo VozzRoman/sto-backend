@@ -14,13 +14,29 @@ const app = express();
 
 const logger = process.env === "development" ? "dev" : "short";
 
+const allowedOrigins = ['https://wheels-car-service.netlify.app'];
 
-// const tireStore = [];
-// const soldTire = [];
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+  exposedHeaders: ['Access-Control-Allow-Origin'],
+};
+
+
 
 app.use(morgan(logger));
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOptions));
+
+
+
 
 app.use("/api/clients", clientsRoute);
 app.use("/api/tiresStore", tireStore);
