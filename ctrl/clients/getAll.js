@@ -3,7 +3,7 @@ import createErrors from "http-errors";
 import { ClientsModel } from "../../models/clientsModel.js";
 
 const getAllClients = asyncHeandler(async(req, res) => {
-	const clients = await ClientsModel.find({});
+	const clients = await ClientsModel.find({}).sort({ createdAt: -1 });
 	if(!clients){
 		createErrors(400, "no clients found")
 	}

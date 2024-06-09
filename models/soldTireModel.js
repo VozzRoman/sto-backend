@@ -17,7 +17,7 @@ const soldTireSchema = new Schema({
 
 
 },
-{versionKey: false, timeseries: false}
+{versionKey: false, timeseries: false, timestamps: true}
 );
 
 export const SoldTireModel = model('soldTire', soldTireSchema);

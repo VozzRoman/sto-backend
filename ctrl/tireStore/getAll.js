@@ -3,7 +3,7 @@ import createErrors from "http-errors";
 import { TireStoreModel } from "../../models/tireStoreModel.js";
 
 const getAllTires = asyncHeandler(async(req, res) => {
-	const tires = await TireStoreModel.find({});
+	const tires = await TireStoreModel.find({}).sort({ createdAt: -1 });
 	if(!tires){
 		createErrors(400, "no tires found")
 	}

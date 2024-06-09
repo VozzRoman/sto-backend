@@ -34,7 +34,7 @@ const clientsSchema = new Schema({
 	discount: {type: String, required: false},
 
 },
-{versionKey: false, timeseries: false}
+{versionKey: false, timeseries: false, timestamps: true}
 );
 
 export const ClientsModel = model('client', clientsSchema );

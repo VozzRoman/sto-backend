@@ -26,7 +26,7 @@ const tireStoreSchema = new Schema({
 
 
 },
-{versionKey: false, timeseries: false}
+{versionKey: false, timeseries: false, timestamps: true}
 );
 
 export const TireStoreModel = model('tire', tireStoreSchema);
